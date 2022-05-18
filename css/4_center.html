@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bu 不固定宽高实现居中布局</title>
+</head>
+<style>
+  /* 方式一：定位 + tranform */
+  /* .box {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    position: relative;
+  }
+
+  .content {
+    background-color: aquamarine;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
+
+  /* 方式二：table-cell */
+  /* .box {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .content {
+    background-color: aquamarine;
+    display: inline-block;
+  } */
+
+  /* 方式三：flex */
+  .box {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    background-color: aquamarine;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="content">content</div>
+  </div>
+</body>
+
+</html>

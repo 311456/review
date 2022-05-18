@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画三角形</title>
+</head>
+<style>
+  .box {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom: 10px solid red;
+  }
+
+  /* 扇形 */
+  .box2 {
+    border: 50px solid transparent;
+    width: 0;
+    border-top-color: red;
+    border-radius: 50px;
+  }
+</style>
+
+<body>
+  <div class="box"></div>
+  <div class="box2"></div>
+</body>
+<script>
+  function a() { }
+  var a;
+  console.log("未赋值时的a:", typeof a); // function
+  a = "hello"
+  console.log(typeof a); // string
+
+  var nodes = document.getElementsByTagName("div")
+  for (var i = 0; i < nodes.length; i++) {
+    (function (i) {
+      nodes[i].onclick = function () {
+        console.log(i);
+      }
+    })(i)
+  }
+
+  function foo() {
+    var a = "str"
+    function bar() {
+      console.log(a)
+    }
+    return bar
+  }
+  var test = foo()
+  // 保存着bar的引用，所以foo将会常驻内存
+  test() 
+</script>
+
+</html>
