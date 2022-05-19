@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流的基本实现</title>
+</head>
+
+<body>
+  <script>
+    // 节流函数
+    // 1.返回值是一个函数
+    // 2.判断定时器是否存在。存在就返回false
+    // 3.在定时器中清除定时，同时置为 null ，然后执行该函数 
+    function throttle(fn, interval) {
+      var timer
+      return (event) => {
+        if (timer) {
+          return false
+        }
+        timer = setTimeout(() => {
+          clearTimeout(timer)
+          timer = null
+          fn(event)
+        }, interval);
+      }
+    }
+    // 浏览器窗口发生改变时的事件响应函数
+    window.onresize = throttle(function (event) {
+      console.log(event);
+    }, 2000)
+  </script>
+</body>
+
+</html>

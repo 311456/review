@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖的基本实现</title>
+</head>
+
+<body>
+  <input type="text">
+  <script>
+    // 防抖
+    // 1.返回值是改装后的响应函数
+    // 2.时间间隔内执行事件响应函数
+    function debounce(fn, interval) {
+      let timer = null
+      return () => {
+        // 清除在时间间隔内触发的其他定时器
+        clearTimeout(timer)
+        timer = setTimeout(fn, interval)
+      }
+    }
+    var inputEl = document.querySelector("input")
+    // 输入时的事件响应函数
+    inputEl.oninput = debounce(function () {
+      console.log(inputEl.value);
+    }, 1000)
+  </script>
+</body>
+
+</html>
