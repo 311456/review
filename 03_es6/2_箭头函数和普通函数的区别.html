@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头函数和普通函数的区别</title>
+</head>
+
+<body>
+  <script>
+    // 1.this 指向
+    function testThis() {
+      console.log(this);
+    }
+    const testThis2 = () => {
+      console.log("箭头函数：", this); // window
+    }
+    let obj = {
+      name: "hhh",
+      testThis,
+      testThis2
+    }
+    obj.testThis()
+    obj.testThis2()
+
+    // 2.call\apply\bind 无法修改箭头函数指向
+    testThis2.call(obj) // window
+
+    // 3.箭头函数不能当作构造函数
+    const Person = () => { }
+    // const person = new Person() //Uncaught TypeError: Person is not a constructor
+
+    // 4.箭头函数不能使用 arguments 对象。通过 ... 扩展运算符可以获取
+    const test2 = (...arguments) => {
+      console.log(arguments);
+    }
+    test2() //Uncaught ReferenceError: arguments is not defined
+
+    // 5.不支持 new.target 属性
+    function Person2() {
+      let target = new.target
+      console.log(target);
+    }
+    const Person3 = () => {
+      let target = new.target // Uncaught SyntaxError: new.target expression is not allowed here
+      console.log(target);
+    }
+    const people = new Person2()
+    const people1 = new Person3() 
+  </script>
+</body>
+
+</html>
